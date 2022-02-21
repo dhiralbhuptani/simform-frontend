@@ -1,0 +1,53 @@
+<form #frm="ngForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="formGroupExampleInput"
+      placeholder="Email"
+      formControlName="email"
+    />
+    <ng-container
+      *ngIf="
+        (loginForm.get('email').invalid &&
+          (loginForm.get('email').dirty ||
+            loginForm.get('email').touched)) ||
+        frm.submitted
+      "
+    >
+      <ng-container *ngIf="loginForm.get('email').hasError('required') || loginForm.get('email').hasError('email')">
+        Enter valid email address.
+      </ng-container>
+    </ng-container>
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="formGroupExampleInput2"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <ng-container
+      *ngIf="
+        (loginForm.get('password').invalid &&
+          (loginForm.get('password').dirty ||
+            loginForm.get('password').touched)) ||
+        frm.submitted
+      "
+    >
+      <ng-container *ngIf="loginForm.get('password').hasError('required')">
+        Password is required.
+      </ng-container>
+    </ng-container>
+  </div>  
+  <div class="mb-3">
+    <input type="submit" class="btn btn-primary" value="Login" [disabled]="loginForm.invalid">
+  </div>
+  <p>
+    Don't have an account?
+    <a routerLink="/register">Register</a>
+  </p>
+</form>

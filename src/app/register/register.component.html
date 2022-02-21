@@ -1,0 +1,97 @@
+<form #frm="ngForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">First name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput"
+      placeholder="First name"
+      formControlName="firstName"
+    />
+    <ng-container
+      *ngIf="
+        (registerForm.get('firstName').invalid &&
+          (registerForm.get('firstName').dirty ||
+            registerForm.get('firstName').touched)) ||
+        frm.submitted
+      "
+    >
+      <ng-container *ngIf="registerForm.get('firstName').hasError('required')">
+        First name is required.
+      </ng-container>
+    </ng-container>
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">Last name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput"
+      placeholder="Last name"
+      formControlName="lastName"
+    />
+    <ng-container
+      *ngIf="
+        (registerForm.get('lastName').invalid &&
+          (registerForm.get('lastName').dirty ||
+            registerForm.get('lastName').touched)) ||
+        frm.submitted
+      "
+    >
+      <ng-container *ngIf="registerForm.get('lastName').hasError('required')">
+        Last name is required.
+      </ng-container>
+    </ng-container>
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="formGroupExampleInput"
+      placeholder="Email"
+      formControlName="email"
+    />
+    <ng-container
+      *ngIf="
+        (registerForm.get('email').invalid &&
+          (registerForm.get('email').dirty ||
+            registerForm.get('email').touched)) ||
+        frm.submitted
+      "
+    >
+      <ng-container *ngIf="registerForm.get('email').hasError('required') || registerForm.get('email').hasError('email')">
+        Enter valid email address.
+      </ng-container>
+    </ng-container>
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="formGroupExampleInput2"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <ng-container
+      *ngIf="
+        (registerForm.get('password').invalid &&
+          (registerForm.get('password').dirty ||
+            registerForm.get('password').touched)) ||
+        frm.submitted
+      "
+    >
+      <ng-container *ngIf="registerForm.get('password').hasError('required')">
+        Password is required.
+      </ng-container>
+    </ng-container>
+  </div>  
+  <div class="mb-3">
+    <input type="submit" class="btn btn-primary" value="Register" [disabled]="registerForm.invalid">
+  </div>
+  <p>
+    Already have an account?
+    <a routerLink="/login">Login</a>
+  </p>
+</form>

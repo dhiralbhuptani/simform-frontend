@@ -1,0 +1,11 @@
+<div class="card mt-5 mb-5" style="width: 25%;">
+  <img 
+  [src]="userDetails.profileImage ? userDetails.profileImage : 'https://via.placeholder.com/150'" 
+  class="card-img-top" 
+  [alt]="userDetails.firstName + userDetails.lastName">
+  <div class="card-body">
+    <h5 class="card-title">{{ userDetails.firstName + ' ' + userDetails.lastName }}</h5>
+    <p class="card-text">{{ userDetails.email }}</p>
+    <a href="#" class="btn btn-primary" [routerLink]="['/profile']">Update</a>
+  </div>
+</div>
